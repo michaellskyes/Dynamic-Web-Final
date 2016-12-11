@@ -1,13 +1,24 @@
 
-
 body {
-  padding: 50px;
-  font: 14px "Montserrat", Helvetica, Arial, sans-serif;
-}
-a {
-  color: #00B7FF;
+    background-image: url("/images/bg.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top;
+    background-size: cover;
 }
 
-.bkimg {
-    background-image: url("/images/bg.png");
+title {
+    text-align: left;
 }
+p {
+    font: 44px "Proxima Nova" bold;
+  color: white;
+
+}
+
+h1 {
+    font: 22px "Proxima Nova" bold;
+    color: white;
+    text-align: left;
+}
+
