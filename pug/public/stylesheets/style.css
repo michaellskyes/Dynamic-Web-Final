@@ -1,0 +1,13 @@
+
+
+body {
+  padding: 50px;
+  font: 14px "Montserrat", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00B7FF;
+}
+
+.bkimg {
+    background-image: url("/images/bg.png");
+}
