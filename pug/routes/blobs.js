@@ -1,3 +1,5 @@
+//REFERENCED CODE FROM A TUTORIAL ON CRUD+REST SKELETONS
+
 var express = require('express'),
     router = express.Router(),
     mongoose = require('mongoose'), //mongo connection
