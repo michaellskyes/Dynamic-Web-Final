@@ -47,8 +47,13 @@ app.use(function(err, req, res, next) {
 });
 
 app.get('/', function (req, res) {
-  res.render('index', { title: 'Hey', message: 'Hello there!' })
+  res.render('index', { title: 'index' })
 })
+
+
+app.get('/about', function(req, res){
+  res.render('about.jade', { title: 'about' });
+});
 
 module.exports = app;
 

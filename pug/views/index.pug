@@ -5,6 +5,26 @@ extends layout
 block content
 
   body.bkimage
+  
+  div.navbar
+  
+      button#logincta.float-right.submit-button LOG IN
+          script(type='text/javascript').
+            document.getElementById("logincta").onclick = function () {
+            location.href = "login.pug";
+            };
+      ul.topnav
+          li.navhome
+            a(href='/') PHOTODUMP
+          li.navitem
+            a(href='about.asp') ABOUT
+          li.navitem
+            a(href='contact.asp') WHY JOIN?
+          li.navitem
+            a(href='news.asp') EXPLORE 
+          li.navitem
+            a(href='/') HOME          
+
 
   div.heroline
     p SHOW AND TELL FOR PHOTOGRAPHERS
@@ -18,3 +38,16 @@ block content
           document.getElementById("herocta").onclick = function () {
           location.href = "home.pug";
           };
+          
+        script(src='js/vendor/jquery.js')
+        script(src='js/vendor/what-input.js')
+        script(src='js/vendor/foundation.js')
+        script(src='js/app.js')
+
+  div.expbtndiv
+        button#exptri.float-right.submit-button EXPLORE THE FEED
+          script(type='text/javascript').
+            document.getElementById("expctatri").onclick = function () {
+            location.href = "explore";
+            };
+        
