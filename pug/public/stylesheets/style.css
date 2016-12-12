@@ -1,5 +1,5 @@
 
-body {
+.bkimage {
     background-image: url("/images/bg.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -7,18 +7,72 @@ body {
     background-size: cover;
 }
 
+.error {
+    background-color: #EF5E79;
+    color: white;
+    font-family:"proxima Nova";
+}
+
 title {
     text-align: left;
 }
-p {
-    font: 44px "Proxima Nova" bold;
-  color: white;
 
+.heroline {
+    padding-top: 50px;
+    padding-bottom: 5px;
+    font: 38px "Proxima Nova";
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    
 }
 
+/*
 h1 {
     font: 22px "Proxima Nova" bold;
     color: white;
     text-align: left;
 }
+*/
 
+.btndiv{
+    padding-top: 50px; 
+    text-align: center;
+}
+
+#herocta {
+	background-color: #C5A482;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:2px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:"proxima Nova";
+    font-weight: bold;
+	font-size:14px;
+	padding:14px 85px;
+	text-decoration:none;
+    border: none;
+    transition: all 0.5s ease 0s;
+}
+#herocta:hover {
+	background-color: black;
+}
+#herocta:active {
+	position:relative;
+}
+
+#herocta:focus {outline:0;}
+
+.heromsg {
+    padding-left: 25%;
+    font: 20px "Proxima Nova";
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    max-width: 50%;
+    line-height: 175%;
+
+
+}

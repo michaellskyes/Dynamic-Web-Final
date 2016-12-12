@@ -1,5 +1,20 @@
 extends layout
 
+
+
 block content
-  h1= title
-  p SHOW AND TELL FOR PHOTOGRAPHERS
+
+  body.bkimage
+
+  div.heroline
+    p SHOW AND TELL FOR PHOTOGRAPHERS
+      
+  p.heromsg Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rutrum urna felis, dictum dictum erat condimentum sit amet. Cras vel est bibendum, Cras vel est bibendum, posuere orci quis, consequat nisl.
+  
+  div.btndiv
+      button#herocta.float-left.submit-button SIGN UP
+
+        script(type='text/javascript').
+          document.getElementById("herocta").onclick = function () {
+          location.href = "home.pug";
+          };
