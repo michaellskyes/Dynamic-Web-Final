@@ -11,7 +11,7 @@ block content
       button#logincta.float-right.submit-button LOG IN
           script(type='text/javascript').
             document.getElementById("logincta").onclick = function () {
-            location.href = "login.pug";
+            location.href = "/auth/instagram";
             };
       ul.topnav
           li.navhome
@@ -26,6 +26,7 @@ block content
             a(href='/') HOME          
 
 
+
   div.heroline
     p SHOW AND TELL FOR PHOTOGRAPHERS
       
@@ -36,14 +37,9 @@ block content
 
         script(type='text/javascript').
           document.getElementById("herocta").onclick = function () {
-          location.href = "home.pug";
+          location.href = "/auth/instagram";
           };
           
-        script(src='js/vendor/jquery.js')
-        script(src='js/vendor/what-input.js')
-        script(src='js/vendor/foundation.js')
-        script(src='js/app.js')
-
   div.expbtndiv
         button#exptri.float-right.submit-button EXPLORE THE FEED
           script(type='text/javascript').

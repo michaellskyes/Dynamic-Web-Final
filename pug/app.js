@@ -1,9 +1,18 @@
+
+
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
+//var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+ 
+var passport = require('passport');
+var config = require('./oauth.js');
+var InstagramStrategy = require('passport-instagram').Strategy;
+
+var INSTAGRAM_CLIENT_ID = "f1137177dcc746e6859eae329e233ed5";
+var INSTAGRAM_CLIENT_SECRET = "5f38d5792ae1485abc803b3a6484264a";
 
 var db = require('./model/db'),
     blob = require('./model/blobs');
@@ -24,9 +33,89 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+  // Initialize Passport!  Also use passport.session() middleware, to support
+  // persistent login sessions (recommended).
+  app.use(passport.initialize());
+  app.use(passport.session());
+//  app.use(app.router);
+  app.use(express.static(__dirname + '/public'));
+
 app.use('/', routes);
 app.use('/blobs', blobs);
 //app.use('/users', users);
+
+
+
+app.get('/', function (req, res) {
+  res.render('index', { user: req.user })
+})
+
+
+app.get('/about', function(req, res){
+  res.render('about.jade', { title: 'about' });
+});
+
+//PASSPORT
+
+// serialize and deserialize
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
+
+passport.use(new InstagramStrategy({
+    clientID: 'f1137177dcc746e6859eae329e233ed5',
+    clientSecret: '5f38d5792ae1485abc803b3a6484264a',
+    callbackURL: "http://127.0.0.1:3000/auth/instagram/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    process.nextTick(function () {
+      
+
+      return done(null, profile);
+    });
+  }
+));
+
+
+// routes
+
+app.get('/account', ensureAuthenticated, function(req, res){
+  res.render('account', { user: req.user });
+});
+
+app.get('/login', function(req, res){
+  res.render('login', { user: req.user });
+});
+
+app.get('/auth/instagram',
+  passport.authenticate('instagram'),
+  function(req, res){
+  });
+
+
+app.get('/auth/instagram/callback', 
+  passport.authenticate('instagram', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+  });
+
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
+
+//app.listen(3000);
+
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) { return next(); }
+  res.redirect('/login')
+}
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -44,15 +133,6 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-});
-
-app.get('/', function (req, res) {
-  res.render('index', { title: 'index' })
-})
-
-
-app.get('/about', function(req, res){
-  res.render('about.jade', { title: 'about' });
 });
 
 module.exports = app;
